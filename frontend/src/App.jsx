@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
-import BookingForm from './components/BookingForm';
-import Payment from './components/Payment';
-import Confirmation from './components/Confirmation';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AdminDashboard from './components/AdminDashboard';
+import HotelManager from './components/HotelManager';
+import ReviewModeration from './components/ReviewModeration';
+import AnalyticsPanel from './components/AnalyticsPanel';
 
 function App() {
-  const [booking, setBooking] = useState(null);
-  const [paymentInfo, setPaymentInfo] = useState(null);
-
-  const handleBookingSubmit = (data) => {
-    setBooking(data);
-  };
-
-  const handlePaymentSuccess = (info) => {
-    setPaymentInfo(info);
-  };
-
   return (
-    <div className="App">
-      {!booking && <BookingForm onBookingSubmit={handleBookingSubmit} />}
-      {booking && !paymentInfo && <Payment booking={booking} onPaymentSuccess={handlePaymentSuccess} />}
-      {paymentInfo && <Confirmation paymentInfo={paymentInfo} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/hotel-manager" element={<HotelManager />} />
+        <Route path="/review-moderation" element={<ReviewModeration />} />
+        <Route path="/analytics-panel" element={<AnalyticsPanel />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
