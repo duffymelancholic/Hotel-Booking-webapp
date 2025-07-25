@@ -1,5 +1,27 @@
 {
+  "name": "hotel-booking-webapp",
+  "version": "1.0.0",
+  "description": "- `frontend/` – React + Vite frontend - `backend/` – Express.js backend API - `hotels.json` – Sample hotel data (used as mock DB)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duffymelancholic/Hotel-Booking-webapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/duffymelancholic/Hotel-Booking-webapp/issues"
+  },
+  "homepage": "https://github.com/duffymelancholic/Hotel-Booking-webapp#readme",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
     "react-router-dom": "^7.7.0"
   }
 }
