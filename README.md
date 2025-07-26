@@ -206,7 +206,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 If you encounter any issues or have questions:
 
 - **Create an Issue**: [GitHub Issues](https://github.com/duffymelancholic/Hotel-Booking-webapp/issues)
-- **Email**: [Your Email]
+- **Email**: nicholasobonyo444@gmail.com
 - **Documentation**: Check the [Wiki](https://github.com/duffymelancholic/Hotel-Booking-webapp/wiki)
 
 ---
