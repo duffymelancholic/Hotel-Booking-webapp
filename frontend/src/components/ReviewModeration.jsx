@@ -24,7 +24,31 @@ const ReviewModeration = () => {
   return (
     <div>
       <h2>Review Moderation</h2>
-      {/* ...review list as before... */}
+      <div>
+        {reviews.map(review => (
+          <div key={review.id} style={{ 
+            border: '1px solid #ccc', 
+            margin: '10px 0', 
+            padding: '10px',
+            backgroundColor: review.flagged ? '#ffebee' : 'white'
+          }}>
+            <h4>{review.user_name}</h4>
+            <p>Rating: {review.rating}/5</p>
+            <p>Comment: {review.comment}</p>
+            <p>Date: {review.date}</p>
+            <p>Hotel ID: {review.hotel_id}</p>
+            {review.flagged && <p style={{ color: 'red' }}>FLAGGED</p>}
+            <div>
+              <button onClick={() => flagReview(review.id)} disabled={review.flagged}>
+                Flag Review
+              </button>
+              <button onClick={() => removeReview(review.id)} style={{ marginLeft: '10px' }}>
+                Remove Review
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

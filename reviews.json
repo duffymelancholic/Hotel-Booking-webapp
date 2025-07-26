@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "hotel_id": 1,
+    "user_name": "John Doe",
+    "rating": 5,
+    "comment": "Excellent hotel with great service!",
+    "date": "2024-01-15",
+    "flagged": false
+  },
+  {
+    "id": 2,
+    "hotel_id": 1,
+    "user_name": "Jane Smith",
+    "rating": 4,
+    "comment": "Good location and clean rooms.",
+    "date": "2024-01-20",
+    "flagged": false
+  },
+  {
+    "id": 3,
+    "hotel_id": 2,
+    "user_name": "Bob Johnson",
+    "rating": 3,
+    "comment": "Average experience, could be better.",
+    "date": "2024-01-25",
+    "flagged": false
+  },
+  {
+    "id": 4,
+    "hotel_id": 2,
+    "user_name": "Alice Brown",
+    "rating": 5,
+    "comment": "Amazing stay! Highly recommended.",
+    "date": "2024-01-30",
+    "flagged": false
+  }
+] 
