@@ -43,6 +43,21 @@ try {
   console.error('Failed to load reviews.json:', err);
 }
 
+// Users database path
+// (Removed duplicate users loading block.)
+
+// Users database path
+const USERS_PATH = path.join(__dirname, '../users.json');
+let users = [];
+try {
+  if (fs.existsSync(USERS_PATH)) {
+    const udata = fs.readFileSync(USERS_PATH, 'utf-8');
+    users = JSON.parse(udata);
+  }
+} catch (err) {
+  console.error('Failed to load users.json:', err);
+}
+
 // GET /hotels with optional filtering
 app.get('/hotels', (req, res) => {
   let result = hotels;
@@ -169,6 +184,183 @@ app.get('/api/analytics', (req, res) => {
     totalPayments: payments.length
   };
   res.json(analytics);
+});
+
+// Authentication endpoints
+// POST /api/auth/login
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+  
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid email or password' });
+  }
+  
+  // In a real app, you'd generate a JWT token here
+  const { password: _, ...userWithoutPassword } = user;
+  
+  res.json({
+    message: 'Login successful',
+    user: userWithoutPassword,
+    token: `mock-jwt-token-${user.id}` // Mock JWT token
+  });
+});
+
+// POST /api/auth/register
+app.post('/api/auth/register', (req, res) => {
+  const { email, password, name } = req.body;
+  
+  if (!email || !password || !name) {
+    return res.status(400).json({ error: 'Email, password, and name are required' });
+  }
+  
+  // Check if user already exists
+  const existingUser = users.find(u => u.email === email);
+  if (existingUser) {
+    return res.status(409).json({ error: 'User already exists' });
+  }
+  
+  // Create new user
+  const newUser = {
+    id: users.length ? Math.max(...users.map(u => u.id)) + 1 : 1,
+    email,
+    password,
+    name,
+    role: 'customer', // Default role for new registrations
+    createdAt: new Date().toISOString()
+  };
+  
+  users.push(newUser);
+  
+  // Save to file
+  try {
+    fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2));
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to save user' });
+  }
+  
+  const { password: _, ...userWithoutPassword } = newUser;
+  
+  res.status(201).json({
+    message: 'Registration successful',
+    user: userWithoutPassword,
+    token: `mock-jwt-token-${newUser.id}` // Mock JWT token
+  });
+});
+
+// GET /api/auth/me (get current user)
+app.get('/api/auth/me', (req, res) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+  
+  // In a real app, you'd verify the JWT token here
+  const userId = token.replace('mock-jwt-token-', '');
+  const user = users.find(u => u.id == userId);
+  
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+  
+  const { password: _, ...userWithoutPassword } = user;
+  res.json({ user: userWithoutPassword });
+});
+
+// Authentication endpoints
+// POST /api/auth/login
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+  
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid email or password' });
+  }
+  
+  // Remove password from response
+  const { password: _, ...userWithoutPassword } = user;
+  
+  res.json({
+    message: 'Login successful',
+    user: userWithoutPassword,
+    token: `mock-jwt-token-${user.id}` // Mock JWT token
+  });
+});
+
+// POST /api/auth/register
+app.post('/api/auth/register', (req, res) => {
+  const { email, password, name } = req.body;
+  
+  if (!email || !password || !name) {
+    return res.status(400).json({ error: 'Email, password, and name are required' });
+  }
+  
+  // Check if user already exists
+  const existingUser = users.find(u => u.email === email);
+  if (existingUser) {
+    return res.status(409).json({ error: 'User with this email already exists' });
+  }
+  
+  // Create new user
+  const newUser = {
+    id: users.length ? Math.max(...users.map(u => u.id)) + 1 : 1,
+    email,
+    password,
+    name,
+    role: 'customer', // Default role for new registrations
+    createdAt: new Date().toISOString()
+  };
+  
+  users.push(newUser);
+  
+  // Save to file
+  try {
+    fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2));
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to save user' });
+  }
+  
+  // Remove password from response
+  const { password: _, ...userWithoutPassword } = newUser;
+  
+  res.status(201).json({
+    message: 'Registration successful',
+    user: userWithoutPassword,
+    token: `mock-jwt-token-${newUser.id}`
+  });
+});
+
+// GET /api/auth/me (get current user)
+app.get('/api/auth/me', (req, res) => {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+  
+  // Extract user ID from mock token
+  const userId = token.replace('mock-jwt-token-', '');
+  const user = users.find(u => u.id == userId);
+  
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+  
+  // Remove password from response
+  const { password: _, ...userWithoutPassword } = user;
+  
+  res.json({ user: userWithoutPassword });
 });
 
 app.get('/', (req, res) => {

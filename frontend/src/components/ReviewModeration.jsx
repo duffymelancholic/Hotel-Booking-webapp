@@ -22,8 +22,22 @@ const ReviewModeration = () => {
   };
 
   return (
-    <div>
-      <h2>Review Moderation</h2>
+    <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '20px',
+      paddingTop: '100px', // Add top padding to account for fixed navbar
+      backgroundColor: 'white',
+      borderRadius: '10px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    }}>
+      <h2 style={{ 
+        color: '#333', 
+        marginBottom: '30px', 
+        textAlign: 'center',
+        fontSize: '2em',
+        fontWeight: 'bold'
+      }}>📝 Review Moderation</h2>
       <div>
         {reviews.map(review => (
           <div key={review.id} style={{ 

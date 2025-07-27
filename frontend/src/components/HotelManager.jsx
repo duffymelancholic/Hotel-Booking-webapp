@@ -54,6 +54,7 @@ const HotelManager = () => {
       maxWidth: '1200px', 
       margin: '0 auto', 
       padding: '20px',
+      paddingTop: '100px', // Add top padding to account for fixed navbar
       backgroundColor: 'white',
       borderRadius: '10px',
       boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
