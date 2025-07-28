@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -48,9 +50,8 @@ const Login = () => {
         throw new Error(data.error || 'Authentication failed');
       }
 
-      // Store token and user data
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      // Use the AuthContext login function instead of manually setting localStorage
+      login(data.user, data.token);
 
       setSuccess(isLogin ? 'Login successful! Redirecting...' : 'Registration successful! Redirecting...');
       

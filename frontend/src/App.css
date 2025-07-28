@@ -101,8 +101,7 @@
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 45px rgba(31, 38, 135, 0.5);
-  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 40px rgba(31, 38, 135, 0.5);
 }
 
 @keyframes cardFadeIn {
@@ -118,27 +117,28 @@
 
 .read-the-docs {
   color: #888;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .read-the-docs:hover {
   color: #667eea;
-  transform: scale(1.05);
 }
 
-/* Enhanced button styles */
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 12px 24px;
   border-radius: 25px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn-primary::before {
@@ -148,8 +148,8 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .btn-primary:hover::before {
@@ -157,42 +157,41 @@
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
-/* Input field enhancements */
 .input-modern {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+  width: 100%;
   padding: 15px 20px;
-  color: #333;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
   font-size: 16px;
   transition: all 0.3s ease;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+  box-sizing: border-box;
 }
 
 .input-modern:focus {
   outline: none;
   border-color: #667eea;
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
 }
 
 .input-modern::placeholder {
-  color: rgba(51, 51, 51, 0.7);
+  color: #999;
+  font-style: italic;
 }
 
-/* Loading spinner */
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(102, 126, 234, 0.3);
-  border-top: 4px solid #667eea;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
   animation: spin 1s linear infinite;
+  margin: 20px auto;
 }
 
 @keyframes spin {
@@ -200,7 +199,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Text animations */
 .text-fade-in {
   animation: textFadeIn 0.8s ease-out;
 }
@@ -216,9 +214,9 @@
   }
 }
 
-/* Hover effects for links */
 .link-hover {
   position: relative;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
@@ -229,7 +227,7 @@
   height: 2px;
   bottom: -2px;
   left: 0;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #667eea, #764ba2);
   transition: width 0.3s ease;
 }
 
@@ -237,15 +235,14 @@
   width: 100%;
 }
 
-/* Responsive enhancements */
 @media (max-width: 768px) {
   .card {
+    margin: 10px;
     padding: 1.5em;
-    margin: 1em;
   }
   
   .btn-primary {
-    padding: 10px 25px;
+    padding: 10px 20px;
     font-size: 14px;
   }
   
@@ -253,4 +250,615 @@
     padding: 12px 15px;
     font-size: 14px;
   }
+}
+
+/* Error container */
+.error-container {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.error-container h2 {
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.error-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.error-container button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Payment Form Styles */
+.payment-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.payment-form h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: 0 0 40px 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.payment-form .form-section {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.payment-form .form-section h3 {
+  margin-bottom: 25px;
+  color: #667eea;
+  font-size: 1.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booking-summary, .payment-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-item.total {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1em;
+  border-left: 4px solid #fff;
+}
+
+.summary-item .label {
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-item .value {
+  font-weight: 500;
+  color: #666;
+}
+
+.summary-item.total .value {
+  color: white;
+  font-weight: 700;
+}
+
+.payment-button {
+  width: 100%;
+  padding: 20px 30px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.payment-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.payment-button:hover::before {
+  left: 100%;
+}
+
+.payment-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8, #6b46c1);
+}
+
+.payment-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.payment-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.payment-form .back-button {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.payment-form .back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+@media (max-width: 768px) {
+  .payment-container {
+    margin: 20px;
+    padding: 30px;
+  }
+  
+  .payment-form h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .payment-form .form-section {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .payment-form .form-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .summary-item {
+    padding: 12px 15px;
+  }
+  
+  .summary-item .label,
+  .summary-item .value {
+    font-size: 14px;
+  }
+  
+  .payment-button {
+    padding: 18px 25px;
+    font-size: 1.2rem;
+  }
+  
+  .payment-form .back-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Booking Form Styles - COMPLETELY REWRITTEN */
+.booking-form {
+  max-width: 900px !important;
+  margin: 80px auto !important;
+  padding: 60px !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 40px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.booking-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.booking-form h2 {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  text-align: center !important;
+  margin: 0 0 40px 0 !important;
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  position: relative !important;
+}
+
+.booking-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Form Groups - Much More Spacious */
+.booking-form .form-group {
+  margin-bottom: 40px !important;
+  position: relative !important;
+}
+
+.booking-form .form-group label {
+  display: block !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  margin-bottom: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  position: relative !important;
+}
+
+.booking-form .form-group label::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Input Fields - Much Larger and More Spacious */
+.booking-form .form-group input,
+.booking-form .form-group select {
+  width: 100% !important;
+  padding: 18px 20px !important;
+  font-size: 1.1rem !important;
+  border: 2px solid #e1e5e9 !important;
+  border-radius: 15px !important;
+  background: #f8f9fa !important;
+  color: #333 !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.booking-form .form-group input:focus,
+.booking-form .form-group select:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  background: white !important;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.booking-form .form-group input::placeholder {
+  color: #999 !important;
+  font-style: italic !important;
+}
+
+/* Form Rows - Better Layout */
+.booking-form .form-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  margin-bottom: 20px !important;
+}
+
+.booking-form .form-row.full-width {
+  grid-template-columns: 1fr !important;
+}
+
+/* Date Picker Styling */
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.react-datepicker__input-container input {
+  width: 100% !important;
+  padding: 18px 20px !important;
+  font-size: 1.1rem !important;
+  border: 2px solid #e1e5e9 !important;
+  border-radius: 15px !important;
+  background: #f8f9fa !important;
+  color: #333 !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+.react-datepicker__input-container input:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  background: white !important;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #999 !important;
+  font-style: italic !important;
+}
+
+/* Submit Button - Much Larger and More Prominent */
+.booking-form button[type="submit"] {
+  width: 100% !important;
+  padding: 20px 30px !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: white !important;
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-top: 20px !important;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3) !important;
+}
+
+.booking-form button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.booking-form button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+.booking-form button[type="submit"]:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #5a6fd8, #6b46c1) !important;
+}
+
+.booking-form button[type="submit"]:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Error Styling */
+.booking-form .error {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+  color: white !important;
+  padding: 15px 20px !important;
+  border-radius: 12px !important;
+  margin-bottom: 30px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3) !important;
+  border-left: 4px solid #c62828 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .booking-form {
+    margin: 20px !important;
+    padding: 30px !important;
+    gap: 30px !important;
+  }
+  
+  .booking-form h2 {
+    font-size: 2rem !important;
+    margin-bottom: 30px !important;
+  }
+  
+  .booking-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  
+  .booking-form .form-group {
+    margin-bottom: 30px !important;
+  }
+  
+  .booking-form .form-group input,
+  .booking-form .form-group select,
+  .react-datepicker__input-container input {
+    padding: 16px 18px !important;
+    font-size: 1rem !important;
+  }
+  
+  .booking-form button[type="submit"] {
+    padding: 18px 25px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Additional Visual Enhancements */
+.booking-form .form-group:hover label {
+  color: #667eea !important;
+  transform: translateX(5px) !important;
+  transition: all 0.3s ease !important;
+}
+
+.booking-form .form-group input:hover,
+.booking-form .form-group select:hover,
+.react-datepicker__input-container input:hover {
+  border-color: #667eea !important;
+  background: #f0f2ff !important;
+}
+
+/* Success State */
+.booking-form .form-group input:valid,
+.booking-form .form-group select:valid {
+  border-color: #4caf50 !important;
+  background: #f8fff8 !important;
+}
+
+/* Loading State */
+.booking-form button[type="submit"]:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+}
+
+/* Focus States for Accessibility */
+.booking-form .form-group input:focus-visible,
+.booking-form .form-group select:focus-visible,
+.react-datepicker__input-container input:focus-visible {
+  outline: 2px solid #667eea !important;
+  outline-offset: 2px !important;
+}
+
+/* Payment Button - Enhanced and Fixed */
+.payment-button {
+  width: 100% !important;
+  padding: 20px 30px !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: white !important;
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-top: 20px !important;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3) !important;
+  display: block !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+.payment-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.payment-button:hover::before {
+  left: 100%;
+}
+
+.payment-button:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #5a6fd8, #6b46c1) !important;
+}
+
+.payment-button:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+.payment-button:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.7 !important;
+}
+
+.payment-button:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: #ccc !important;
+}
+
+/* Payment Form Error Styling */
+.payment-form .error {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+  color: white !important;
+  padding: 15px 20px !important;
+  border-radius: 12px !important;
+  margin-top: 20px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3) !important;
+  border-left: 4px solid #c62828 !important;
 }

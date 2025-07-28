@@ -40,26 +40,82 @@ const BookingForm = ({ onBookingSubmit }) => {
     <form onSubmit={handleSubmit} className="booking-form">
       <h2>Book Your Stay</h2>
       {error && <div className="error">{error}</div>}
-      <label>Name:
-        <input type="text" value={name} onChange={e => setName(e.target.value)} required />
-      </label>
-      <label>Room Type:
-        <select value={roomType} onChange={e => setRoomType(e.target.value)} required>
-          <option value="">Select a room</option>
+      
+      <div className="form-group">
+        <label htmlFor="name">Full Name</label>
+        <input 
+          id="name"
+          type="text" 
+          value={name} 
+          onChange={e => setName(e.target.value)} 
+          placeholder="Enter your full name"
+          required 
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="roomType">Room Type</label>
+        <select 
+          id="roomType"
+          value={roomType} 
+          onChange={e => setRoomType(e.target.value)} 
+          required
+        >
+          <option value="">Select a room type</option>
           {roomTypes.map(rt => (
-            <option key={rt.value} value={rt.value}>{rt.label} (${rt.price}/night)</option>
+            <option key={rt.value} value={rt.value}>
+              {rt.label} - ${rt.price}/night
+            </option>
           ))}
         </select>
-      </label>
-      <label>Check-in Date:
-        <DatePicker selected={checkIn} onChange={date => setCheckIn(date)} selectsStart startDate={checkIn} endDate={checkOut} minDate={new Date()} required />
-      </label>
-      <label>Check-out Date:
-        <DatePicker selected={checkOut} onChange={date => setCheckOut(date)} selectsEnd startDate={checkIn} endDate={checkOut} minDate={checkIn || new Date()} required />
-      </label>
-      <label>Guests:
-        <input type="number" min="1" value={guests} onChange={e => setGuests(Number(e.target.value))} required />
-      </label>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="checkIn">Check-in Date</label>
+          <DatePicker 
+            id="checkIn"
+            selected={checkIn} 
+            onChange={date => setCheckIn(date)} 
+            selectsStart 
+            startDate={checkIn} 
+            endDate={checkOut} 
+            minDate={new Date()} 
+            placeholderText="Select check-in date"
+            required 
+          />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="checkOut">Check-out Date</label>
+          <DatePicker 
+            id="checkOut"
+            selected={checkOut} 
+            onChange={date => setCheckOut(date)} 
+            selectsEnd 
+            startDate={checkIn} 
+            endDate={checkOut} 
+            minDate={checkIn || new Date()} 
+            placeholderText="Select check-out date"
+            required 
+          />
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="guests">Number of Guests</label>
+        <input 
+          id="guests"
+          type="number" 
+          min="1" 
+          max="10"
+          value={guests} 
+          onChange={e => setGuests(Number(e.target.value))} 
+          placeholder="Enter number of guests"
+          required 
+        />
+      </div>
+
       <button type="submit">Proceed to Payment</button>
     </form>
   );
